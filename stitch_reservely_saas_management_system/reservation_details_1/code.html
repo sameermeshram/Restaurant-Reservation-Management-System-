@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reservation Details | DineMaster Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#006f64",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#585be6",
+                        "tertiary": "#3e3fcc",
+                        "on-secondary-fixed-variant": "#005048",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-tint": "#0053db",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-secondary-fixed": "#00201c",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-tertiary-container": "#f1eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "secondary": "#006b5f",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed": "#71f8e4",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-container": "#2563eb",
+                        "secondary-container": "#6df5e1",
+                        "primary": "#004ac6",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "outline-variant": "#c3c6d7",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#434655",
+                        "outline": "#737686",
+                        "on-surface": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container": "#e5eeff",
+                        "surface": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 238, 255, 1);
+        }
+        .qr-gradient {
+            background: linear-gradient(135deg, #004ac6 0%, #3e3fcc 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar (Shared Component Identity) -->
+<header class="bg-surface/90 backdrop-blur-md sticky top-0 z-40 border-b border-outline-variant shadow-sm h-16 flex items-center">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 group transition-all duration-200 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-headline-sm" data-icon="arrow_back">arrow_back</span>
+<span class="text-label-md font-label-md">Back to Dashboard</span>
+</a>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-headline-md font-bold text-primary">DineMaster Pro</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a restaurant manager in a minimalist studio setting. The lighting is soft and high-key, emphasizing a clean and corporate modern aesthetic. The background is a neutral light blue-gray gradient that matches the DineMaster Pro color palette. The subject is smiling warmly, conveying confidence and upscale hospitality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeJwUILgLMWrPEP785jHY9DLsYj83SnfQde6tZgkRPFAqoncO0APbzdgwaTT5eQN0SekT4ibRiBnE5Nr4BUUMh5LVrRUhv7ZZgBIJxC12CJjWgumMpOjqO1ZF8C0yvuJGu87E0iC14i1Ahbr2xnGeWBfF0O4Ky32PqjRO6SeIoi2dwzDwI9Vqn2EaxCc6Bl7IZ3uTOY7cjG3-uwH6lTirJFxkTfENSRZE9RPb1WxxGa3FGf2xl2WTHcP8DljCrhszScgQ4II-3oQ"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<nav class="flex items-center gap-2 text-on-surface-variant mb-2">
+<span class="text-label-sm font-label-sm">RESERVATIONS</span>
+<span class="material-symbols-outlined text-[12px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-label-sm font-label-sm text-primary">#12345</span>
+</nav>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Reservation #12345</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Confirmed for Friday, Oct 24th</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-2 px-md py-sm bg-surface border border-outline text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined text-body-md" data-icon="edit">edit</span>
+                    Edit Details
+                </button>
+<button class="flex items-center gap-2 px-md py-sm bg-error-container text-on-error-container rounded-lg font-label-md text-label-md hover:bg-error/10 border border-transparent hover:border-error transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined text-body-md" data-icon="cancel">cancel</span>
+                    Cancel Reservation
+                </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Information Grid (2/3 width on desktop) -->
+<div class="md:col-span-2 space-y-gutter">
+<div class="glass-card rounded-xl p-xl shadow-md">
+<h2 class="text-headline-sm font-headline-sm mb-lg text-on-surface">Booking Summary</h2>
+<div class="grid grid-cols-2 gap-y-xl gap-x-gutter">
+<!-- Date -->
+<div class="flex items-start gap-md">
+<div class="bg-primary-container/10 p-sm rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_month">calendar_month</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Date</p>
+<p class="text-body-lg font-headline-sm text-on-surface">Oct 24, 2023</p>
+</div>
+</div>
+<!-- Time -->
+<div class="flex items-start gap-md">
+<div class="bg-primary-container/10 p-sm rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Time</p>
+<p class="text-body-lg font-headline-sm text-on-surface">07:30 PM</p>
+</div>
+</div>
+<!-- Guests -->
+<div class="flex items-start gap-md">
+<div class="bg-primary-container/10 p-sm rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="group">group</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Guest Count</p>
+<p class="text-body-lg font-headline-sm text-on-surface">4 People</p>
+</div>
+</div>
+<!-- Table -->
+<div class="flex items-start gap-md">
+<div class="bg-primary-container/10 p-sm rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="grid_view">grid_view</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Table Assignment</p>
+<p class="text-body-lg font-headline-sm text-on-surface">T-12 (Window)</p>
+</div>
+</div>
+</div>
+<div class="mt-xl pt-xl border-t border-outline-variant flex items-center justify-between">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Booking Status</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-label-md font-label-md text-on-secondary-container">Confirmed &amp; Paid</span>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline">View Receipt</button>
+</div>
+</div>
+<!-- Guest Information -->
+<div class="glass-card rounded-xl p-xl shadow-md">
+<h2 class="text-headline-sm font-headline-sm mb-lg text-on-surface">Guest Information</h2>
+<div class="flex items-center gap-md mb-lg">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+</div>
+<div>
+<p class="text-body-lg font-headline-sm text-on-surface">Jonathan Aris</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">jonathan.aris@example.com</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant/50">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Special Requests</p>
+<p class="text-body-md font-body-md text-on-surface italic">"Anniversary dinner. Would prefer a quiet corner if possible. One guest has a shellfish allergy."</p>
+</div>
+</div>
+</div>
+<!-- Sidebar Actions (1/3 width on desktop) -->
+<div class="space-y-gutter">
+<!-- Check-in QR Card -->
+<div class="bg-inverse-surface text-inverse-on-surface rounded-xl p-xl shadow-xl flex flex-col items-center text-center">
+<h3 class="text-headline-sm font-headline-sm mb-sm">Quick Check-in</h3>
+<p class="text-body-sm font-body-sm text-surface-variant mb-xl">Present this code at the restaurant host stand upon arrival.</p>
+<div class="qr-gradient p-md rounded-xl shadow-lg mb-xl">
+<div class="bg-white p-2 rounded-lg">
+<img class="w-40 h-40 object-contain" data-alt="A clean, minimalist vector QR code generated for a luxury restaurant booking system. The QR code is perfectly centered on a white card with rounded corners. The visual style is high-end corporate minimalist, with no visual clutter, fitting the professional 'effortless precision' aesthetic of DineMaster Pro." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8EAfyEp9B2UxCPD7_tmQ5gXMb_33BorjO2Z36Kad9tmHzinBgj7yYQo9Me4bmh_u7l9Q55e8ywyZaZWzslXP18Bt-qoZP3VLUhdTwikOIlDSAGLU8NzNAgV1BySD7b3VEOABtcVQralFHhqNZta-8EV-wzZSocru522zXwEpKpsA0sGsdx2XEO8Th_NQhhwbUhMSvZGSEfLLFWhWowAwrXa9muoh7OyZlgQHSrwq52u5glOr7aT3wO2T_wzRzEO__ySf7YSG9tw"/>
+</div>
+</div>
+<p class="text-label-md font-label-md text-surface-variant mb-md">RESERVATION ID: DMS-12345-X</p>
+<button class="w-full py-md bg-white text-primary rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container-low transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                        Save to Wallet
+                    </button>
+</div>
+<!-- Map / Location Card -->
+<div class="glass-card rounded-xl overflow-hidden shadow-md">
+<div class="h-32 w-full bg-surface-container-highest relative">
+<img class="w-full h-full object-cover" data-alt="A sophisticated, minimalist map graphic of a metropolitan area, styled in light mode tones of soft gray, slate blue, and white. A single elegant marker points to a location. The map uses thin lines and clean typography, consistent with a premium SaaS dashboard aesthetic. The mood is calm, professional, and precise." data-location="New York" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCVCxG3bWz63iZW5U5sTLAsViOA6irrD2SHAtDaOECNTHXct2k2ruQGTmo_NlQaooQvOB8512JEUgNm926X2yeU0yDwlhvEJPvlTg1rLI8EqpRHUTQX0aERe2LBBGDH4VeM25-MiNmyk5SiAe6iS6_Pa5vXP1cagC-ZYODVtw3YGH2kA1c_KOHzZ5JvGKezD24Il0rcxvxRpSU6_abCrYC1cSXLoZ8X0eVRSw5tjgxzOOHmfPGxs4IrUbdZUEZOZSd-mmolaYGxg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+<div class="p-md">
+<h4 class="text-label-md font-label-md text-on-surface mb-1">DineMaster Bistro</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">123 Culinary Avenue, Suite 400</p>
+<a class="inline-block mt-md text-primary font-label-md text-label-md flex items-center gap-1 hover:underline" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="near_me">near_me</span>
+                            Get Directions
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 pb-safe bg-surface shadow-[0_-4px_10px_rgba(0,0,0,0.05)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm-mobile">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span class="text-label-sm font-label-sm-mobile">Book</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-75">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span class="text-label-sm font-label-sm-mobile">My Trips</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-label-sm font-label-sm-mobile">Profile</span>
+</div>
+</nav>
+<script>
+        // Simple interaction for the "Cancel" button to show tactile feedback
+        const cancelBtn = document.querySelector('button.bg-error-container');
+        cancelBtn?.addEventListener('click', () => {
+            if(confirm('Are you sure you want to cancel this reservation? This action cannot be undone.')) {
+                alert('Reservation cancelation request sent.');
+            }
+        });
+        
+        // Simulating some loading or transition atmospheric effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body></html>

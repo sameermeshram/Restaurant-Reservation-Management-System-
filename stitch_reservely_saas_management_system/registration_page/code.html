@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register | HauteReserve</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#006f64",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#585be6",
+                        "tertiary": "#3e3fcc",
+                        "on-secondary-fixed-variant": "#005048",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-tint": "#0053db",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-secondary-fixed": "#00201c",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-tertiary-container": "#f1eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "secondary": "#006b5f",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed": "#71f8e4",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-container": "#2563eb",
+                        "secondary-container": "#6df5e1",
+                        "primary": "#004ac6",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "outline-variant": "#c3c6d7",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#434655",
+                        "outline": "#737686",
+                        "on-surface": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container": "#e5eeff",
+                        "surface": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .input-focus-ring:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #004ac6;
+        }
+        .strength-meter-segment {
+            height: 4px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            background-color: #e5e7eb;
+        }
+        .glass-background {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-md">
+<!-- Subtle Background Shader -->
+<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+
+</div>
+<!-- Registration Container -->
+<main class="relative z-10 w-full max-w-[480px] animate-fade-in">
+<!-- Brand Header -->
+<div class="text-center mb-xl">
+<h1 class="text-primary font-headline-lg text-headline-lg flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+                HauteReserve
+            </h1>
+<p class="text-on-surface-variant text-body-md font-body-md mt-sm">The gold standard in table management.</p>
+</div>
+<!-- Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-lg p-xl">
+<h2 class="text-on-surface font-headline-md text-headline-md mb-md">Create your account</h2>
+<form class="space-y-lg" id="registrationForm">
+<!-- Full Name Field -->
+<div class="space-y-xs">
+<label class="block text-on-surface-variant font-label-md text-label-md" for="fullName">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">person</span>
+<input class="w-full h-12 pl-11 pr-md bg-surface-bright border border-outline-variant rounded-lg text-body-md font-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" id="fullName" name="fullName" placeholder="Enter your full name" required="" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="block text-on-surface-variant font-label-md text-label-md" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full h-12 pl-11 pr-md bg-surface-bright border border-outline-variant rounded-lg text-body-md font-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" id="email" name="email" placeholder="name@restaurant.com" required="" type="email"/>
+</div>
+<p class="text-error text-label-sm font-label-sm hidden flex items-center gap-1" id="emailError">
+<span class="material-symbols-outlined text-sm">error</span> Please enter a valid email address.
+                    </p>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<label class="block text-on-surface-variant font-label-md text-label-md" for="password">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full h-12 pl-11 pr-md bg-surface-bright border border-outline-variant rounded-lg text-body-md font-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+<!-- Strength Indicator -->
+<div class="pt-2 space-y-2">
+<div class="flex gap-1 w-full">
+<div class="strength-meter-segment flex-1" id="strength-1"></div>
+<div class="strength-meter-segment flex-1" id="strength-2"></div>
+<div class="strength-meter-segment flex-1" id="strength-3"></div>
+<div class="strength-meter-segment flex-1" id="strength-4"></div>
+</div>
+<p class="text-label-sm font-label-sm text-outline" id="strengthText">Password strength</p>
+</div>
+</div>
+<!-- Confirm Password Field -->
+<div class="space-y-xs">
+<label class="block text-on-surface-variant font-label-md text-label-md" for="confirmPassword">Confirm Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">verified_user</span>
+<input class="w-full h-12 pl-11 pr-md bg-surface-bright border border-outline-variant rounded-lg text-body-md font-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required="" type="password"/>
+</div>
+<p class="text-error text-label-sm font-label-sm hidden flex items-center gap-1" id="matchError">
+<span class="material-symbols-outlined text-sm">error</span> Passwords do not match.
+                    </p>
+</div>
+<!-- Action Button -->
+<button class="w-full h-12 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-sm hover:bg-primary-container transition-all active:scale-[0.98] mt-sm flex items-center justify-center gap-sm" type="submit">
+                    Create Account
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<!-- Success Message (Hidden by default) -->
+<div class="hidden p-md bg-secondary-container/20 border border-secondary rounded-lg flex items-start gap-md" id="successMessage">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<div>
+<p class="text-on-secondary-container font-label-md text-label-md">Registration successful!</p>
+<p class="text-on-surface-variant text-body-sm font-body-sm">We've sent a verification link to your email.</p>
+</div>
+</div>
+</form>
+<!-- Footer Link -->
+<div class="mt-xl text-center">
+<p class="text-on-surface-variant text-body-sm font-body-sm">
+                    Already have an account? 
+                    <a class="text-primary font-semibold hover:underline decoration-2 underline-offset-4" href="#">Log in</a>
+</p>
+</div>
+</div>
+<!-- Decorative Info Cards -->
+<div class="grid grid-cols-2 gap-md mt-lg">
+<div class="bg-surface-container border border-outline-variant p-md rounded-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-1 rounded">verified</span>
+<span class="text-label-sm font-label-sm text-on-surface">SOC2 Compliant</span>
+</div>
+<div class="bg-surface-container border border-outline-variant p-md rounded-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary bg-secondary-fixed p-1 rounded">support_agent</span>
+<span class="text-label-sm font-label-sm text-on-surface">24/7 Concierge</span>
+</div>
+</div>
+</main>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const passwordInput = document.getElementById('password');
+            const confirmInput = document.getElementById('confirmPassword');
+            const form = document.getElementById('registrationForm');
+            const matchError = document.getElementById('matchError');
+            const successMessage = document.getElementById('successMessage');
+            
+            const strengthSegments = [
+                document.getElementById('strength-1'),
+                document.getElementById('strength-2'),
+                document.getElementById('strength-3'),
+                document.getElementById('strength-4')
+            ];
+            const strengthText = document.getElementById('strengthText');
+
+            // Password Strength Logic
+            passwordInput.addEventListener('input', (e) => {
+                const val = e.target.value;
+                let strength = 0;
+                
+                if (val.length > 0) strength++;
+                if (val.length > 6) strength++;
+                if (/[A-Z]/.test(val) && /[0-9]/.test(val)) strength++;
+                if (/[^A-Za-z0-9]/.test(val)) strength++;
+
+                // Reset segments
+                strengthSegments.forEach(seg => seg.className = 'strength-meter-segment flex-1');
+                
+                const colors = ['bg-error', 'bg-orange-500', 'bg-yellow-500', 'bg-secondary'];
+                const texts = ['Very Weak', 'Weak', 'Good', 'Excellent'];
+
+                if (strength > 0) {
+                    for (let i = 0; i < strength; i++) {
+                        strengthSegments[i].classList.replace('bg-outline-variant', colors[strength - 1]);
+                        strengthSegments[i].classList.add(colors[strength - 1]);
+                    }
+                    strengthText.innerText = texts[strength - 1];
+                    strengthText.className = `text-label-sm font-label-sm text-${strength === 4 ? 'secondary' : (strength === 1 ? 'error' : 'on-surface-variant')}`;
+                } else {
+                    strengthText.innerText = 'Password strength';
+                    strengthText.className = 'text-label-sm font-label-sm text-outline';
+                }
+            });
+
+            // Form Submission Simulation
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Reset states
+                matchError.classList.add('hidden');
+                
+                if (passwordInput.value !== confirmInput.value) {
+                    matchError.classList.remove('hidden');
+                    confirmInput.focus();
+                    return;
+                }
+
+                // Simulate loading state
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                btn.disabled = true;
+                btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...';
+
+                setTimeout(() => {
+                    btn.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('animate-bounce');
+                    
+                    // Cleanup bounce after a bit
+                    setTimeout(() => successMessage.classList.remove('animate-bounce'), 1000);
+                }, 1500);
+            });
+
+            // Email simple validation
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            emailInput.addEventListener('blur', () => {
+                const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+                if (emailInput.value && !isValid) {
+                    emailError.classList.remove('hidden');
+                    emailInput.classList.add('border-error');
+                } else {
+                    emailError.classList.add('hidden');
+                    emailInput.classList.remove('border-error');
+                }
+            });
+        });
+    </script>
+</body></html>

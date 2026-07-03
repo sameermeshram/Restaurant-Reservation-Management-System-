@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DineMaster Pro | Table Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#006f64",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-container": "#585be6",
+                    "tertiary": "#3e3fcc",
+                    "on-secondary-fixed-variant": "#005048",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "surface-tint": "#0053db",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#2f2ebe",
+                    "secondary-fixed-dim": "#4fdbc8",
+                    "surface-variant": "#d3e4fe",
+                    "tertiary-fixed": "#e1e0ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-secondary-fixed": "#00201c",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#00174b",
+                    "tertiary-fixed-dim": "#c0c1ff",
+                    "on-tertiary-container": "#f1eeff",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#f8f9ff",
+                    "on-tertiary-fixed": "#07006c",
+                    "secondary": "#006b5f",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-container": "#eeefff",
+                    "secondary-fixed": "#71f8e4",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-container": "#2563eb",
+                    "secondary-container": "#6df5e1",
+                    "primary": "#004ac6",
+                    "surface-dim": "#cbdbf5",
+                    "on-background": "#0b1c30",
+                    "inverse-primary": "#b4c5ff",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "outline-variant": "#c3c6d7",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#434655",
+                    "outline": "#737686",
+                    "on-surface": "#0b1c30",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container": "#e5eeff",
+                    "surface": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "xxl": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8f9ff;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+      }
+      .table-card:hover .action-buttons {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .floor-plan-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        position: absolute;
+      }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Admin SideNavBar -->
+<aside class="fixed left-0 h-screen w-72 bg-inverse-surface dark:bg-on-background shadow-xl flex flex-col p-md space-y-1 z-40">
+<div class="px-4 py-6 mb-8">
+<span class="text-headline-sm font-headline-sm font-bold text-white">DineMaster Pro</span>
+<p class="text-label-md font-label-md text-surface-variant/70 mt-1">Admin Panel</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-surface-variant dark:text-outline-variant hover:text-white hover:bg-surface-variant/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-label-md font-label-md">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-surface-variant dark:text-outline-variant hover:text-white hover:bg-surface-variant/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">event_available</span>
+<span class="text-label-md font-label-md">Reservations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg shadow-sm font-bold scale-98" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-label-md font-label-md">Tables</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-surface-variant dark:text-outline-variant hover:text-white hover:bg-surface-variant/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-surface-variant dark:text-outline-variant hover:text-white hover:bg-surface-variant/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-8 border-t border-surface-variant/20">
+<a class="flex items-center gap-3 px-4 py-3 text-surface-variant dark:text-outline-variant hover:text-white hover:bg-surface-variant/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-72 min-h-screen">
+<!-- TopNavBar (Medium) -->
+<header class="flex items-center justify-between w-full px-lg py-sm bg-surface-container-highest dark:bg-surface-container-low border-b border-outline-variant sticky top-0 z-30">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative max-w-md w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-full py-2 pl-10 pr-4 text-body-md font-body-md focus:ring-2 focus:ring-primary" placeholder="Search tables, zones..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a restaurant administrator in a clean-cut white shirt, standing in a brightly lit, modern commercial kitchen environment with stainless steel surfaces and high-end culinary equipment blurred in the background. The lighting is soft and even, highlighting a confident yet friendly expression, ideal for a premium SaaS administrative profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1cetr7QJdMzoJPYXGm49Rq0Lkqh-YTpx8sd0esW5tKkZnNNxyh1T_cejWrS0yEMkHhvHsZ9sv75Bf79Os3d14IFsAnUY4zwXGEJfKSLkWMt4AmmU3MHYe1fVj3VLuiqBOhA0guwv5m7icDiSe91UpGgNNC2SxZ5vDONY70w8G54A5oloUS78-gaaH752hRiEGcoeReAywv6iJewU2lDq-WAg_tb0zRK7pTSRsQRUqwAde1JyjsHp9M5FjUzzWwvtKdgRxKQHKFQ"/>
+</div>
+</div>
+</header>
+<div class="p-xl max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-on-background">Table Management</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Real-time floor plan overview and capacity control.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-transform active:scale-95 shadow-lg">
+<span class="material-symbols-outlined">add</span>
+<span>Add New Table</span>
+</button>
+</div>
+<!-- Floor Plan Quick View (Abstract) -->
+<section class="mb-xl bg-surface-container-lowest rounded-2xl p-lg border border-outline-variant shadow-sm overflow-hidden">
+<div class="flex items-center justify-between mb-md">
+<h2 class="text-headline-sm font-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">map</span>
+                        Live Floor Plan Indicator
+                    </h2>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 text-label-md font-label-md">
+<span class="w-3 h-3 rounded-full bg-secondary"></span> Available
+                        </div>
+<div class="flex items-center gap-2 text-label-md font-label-md">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span> Occupied
+                        </div>
+<div class="flex items-center gap-2 text-label-md font-label-md">
+<span class="w-3 h-3 rounded-full bg-outline"></span> Reserved
+                        </div>
+</div>
+</div>
+<div class="relative w-full h-48 bg-surface-container p-6 rounded-xl border border-dashed border-outline-variant flex items-center justify-center">
+<!-- Abstract representation of the floor -->
+<div class="w-full max-w-4xl h-full flex flex-wrap gap-8 justify-center items-center opacity-80">
+<div class="w-16 h-16 rounded-lg bg-secondary shadow-sm flex items-center justify-center text-white font-bold">T-1</div>
+<div class="w-16 h-16 rounded-full bg-tertiary shadow-sm flex items-center justify-center text-white font-bold">T-2</div>
+<div class="w-16 h-16 rounded-lg bg-outline shadow-sm flex items-center justify-center text-white font-bold">T-3</div>
+<div class="w-24 h-16 rounded-xl bg-secondary shadow-sm flex items-center justify-center text-white font-bold">T-4</div>
+<div class="w-16 h-16 rounded-lg bg-secondary shadow-sm flex items-center justify-center text-white font-bold">T-5</div>
+<div class="w-16 h-16 rounded-full bg-tertiary shadow-sm flex items-center justify-center text-white font-bold">T-6</div>
+<div class="w-16 h-16 rounded-lg bg-secondary shadow-sm flex items-center justify-center text-white font-bold">T-7</div>
+<div class="w-24 h-16 rounded-xl bg-tertiary shadow-sm flex items-center justify-center text-white font-bold">T-8</div>
+</div>
+</div>
+</section>
+<!-- Table Cards Grid -->
+<div class="bento-grid">
+<!-- Table Card 1: Available -->
+<div class="table-card bg-white p-lg rounded-xl border border-outline-variant shadow-sm relative transition-all hover:shadow-md group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">table_restaurant</span>
+</div>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-label-sm font-label-sm rounded-full">Available</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-background">T-12</h3>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant text-body-md font-body-md">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>4 Guests</span>
+</div>
+<div class="action-buttons absolute top-4 right-4 flex gap-1 opacity-0 translate-y-1 transition-all duration-200">
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 text-error rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Table Card 2: Occupied -->
+<div class="table-card bg-white p-lg rounded-xl border border-outline-variant shadow-sm relative transition-all hover:shadow-md group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-tertiary/10 rounded-lg flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">table_bar</span>
+</div>
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-label-sm font-label-sm rounded-full">Occupied</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-background">T-14</h3>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant text-body-md font-body-md">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>2 Guests</span>
+</div>
+<p class="text-xs text-on-surface-variant/60 mt-3 italic">Seated: 45m ago</p>
+<div class="action-buttons absolute top-4 right-4 flex gap-1 opacity-0 translate-y-1 transition-all duration-200">
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 text-error rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Table Card 3: Reserved -->
+<div class="table-card bg-white p-lg rounded-xl border border-outline-variant shadow-sm relative transition-all hover:shadow-md group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-surface-container-high rounded-lg flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">table_restaurant</span>
+</div>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm rounded-full">Reserved</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-background">T-21</h3>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant text-body-md font-body-md">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>6 Guests</span>
+</div>
+<p class="text-xs text-primary font-bold mt-3">Next: 7:30 PM (Smith Party)</p>
+<div class="action-buttons absolute top-4 right-4 flex gap-1 opacity-0 translate-y-1 transition-all duration-200">
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 text-error rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Table Card 4: Available (Large) -->
+<div class="table-card bg-white p-lg rounded-xl border border-outline-variant shadow-sm relative transition-all hover:shadow-md group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">table_restaurant</span>
+</div>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-label-sm font-label-sm rounded-full">Available</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-background">T-05</h3>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant text-body-md font-body-md">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>8 Guests</span>
+</div>
+<div class="action-buttons absolute top-4 right-4 flex gap-1 opacity-0 translate-y-1 transition-all duration-200">
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 text-error rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Table Card 5: Available -->
+<div class="table-card bg-white p-lg rounded-xl border border-outline-variant shadow-sm relative transition-all hover:shadow-md group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">table_restaurant</span>
+</div>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-label-sm font-label-sm rounded-full">Available</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-background">T-09</h3>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant text-body-md font-body-md">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>2 Guests</span>
+</div>
+<div class="action-buttons absolute top-4 right-4 flex gap-1 opacity-0 translate-y-1 transition-all duration-200">
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 text-error rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Table Card 6: Occupied -->
+<div class="table-card bg-white p-lg rounded-xl border border-outline-variant shadow-sm relative transition-all hover:shadow-md group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-tertiary/10 rounded-lg flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">table_bar</span>
+</div>
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-label-sm font-label-sm rounded-full">Occupied</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-background">T-11</h3>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant text-body-md font-body-md">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>4 Guests</span>
+</div>
+<p class="text-xs text-on-surface-variant/60 mt-3 italic">Seated: 12m ago</p>
+<div class="action-buttons absolute top-4 right-4 flex gap-1 opacity-0 translate-y-1 transition-all duration-200">
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 text-error rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Table Card 7: Available -->
+<div class="table-card bg-white p-lg rounded-xl border border-outline-variant shadow-sm relative transition-all hover:shadow-md group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">table_restaurant</span>
+</div>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-label-sm font-label-sm rounded-full">Available</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-background">T-18</h3>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant text-body-md font-body-md">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>4 Guests</span>
+</div>
+<div class="action-buttons absolute top-4 right-4 flex gap-1 opacity-0 translate-y-1 transition-all duration-200">
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 text-error rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Table Card 8: Reserved -->
+<div class="table-card bg-white p-lg rounded-xl border border-outline-variant shadow-sm relative transition-all hover:shadow-md group">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-surface-container-high rounded-lg flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">table_restaurant</span>
+</div>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm rounded-full">Reserved</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-background">T-04</h3>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant text-body-md font-body-md">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>4 Guests</span>
+</div>
+<p class="text-xs text-primary font-bold mt-3">Next: 8:00 PM (Dante Party)</p>
+<div class="action-buttons absolute top-4 right-4 flex gap-1 opacity-0 translate-y-1 transition-all duration-200">
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 hover:bg-error/10 text-error rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Ghost Card: Add New Quick Action -->
+<button class="flex flex-col items-center justify-center p-lg rounded-xl border-2 border-dashed border-outline-variant bg-transparent hover:bg-primary-container/5 hover:border-primary transition-all group">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary mb-2 text-4xl">add_circle</span>
+<span class="text-label-md font-label-md text-on-surface-variant group-hover:text-primary">Quick Add Table</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Simple search filter simulation
+        document.querySelector('input[type="text"]').addEventListener('keyup', function(e) {
+            const query = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.table-card');
+            
+            cards.forEach(card => {
+                const tableName = card.querySelector('h3').textContent.toLowerCase();
+                if (tableName.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Hover effect enhancement for floor plan
+        const floorDots = document.querySelectorAll('.w-16, .w-24');
+        floorDots.forEach(dot => {
+            dot.addEventListener('mouseenter', () => {
+                dot.classList.add('scale-110');
+                dot.style.transition = 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+            dot.addEventListener('mouseleave', () => {
+                dot.classList.remove('scale-110');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HauteReserve Admin | DineMaster Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#006f64",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-container": "#585be6",
+                    "tertiary": "#3e3fcc",
+                    "on-secondary-fixed-variant": "#005048",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "surface-tint": "#0053db",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#2f2ebe",
+                    "secondary-fixed-dim": "#4fdbc8",
+                    "surface-variant": "#d3e4fe",
+                    "tertiary-fixed": "#e1e0ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-secondary-fixed": "#00201c",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#00174b",
+                    "tertiary-fixed-dim": "#c0c1ff",
+                    "on-tertiary-container": "#f1eeff",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#f8f9ff",
+                    "on-tertiary-fixed": "#07006c",
+                    "secondary": "#006b5f",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-container": "#eeefff",
+                    "secondary-fixed": "#71f8e4",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-container": "#2563eb",
+                    "secondary-container": "#6df5e1",
+                    "primary": "#004ac6",
+                    "surface-dim": "#cbdbf5",
+                    "on-background": "#0b1c30",
+                    "inverse-primary": "#b4c5ff",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "outline-variant": "#c3c6d7",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#434655",
+                    "outline": "#737686",
+                    "on-surface": "#0b1c30",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container": "#e5eeff",
+                    "surface": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "xxl": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-bar { transition: height 1s ease-out; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .sidebar-gradient { background: linear-gradient(180deg, #213145 0%, #0b1c30 100%); }
+        .glass-card { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(203, 213, 225, 0.4); }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Admin SideNavBar -->
+<aside class="fixed left-0 h-screen w-72 flex flex-col p-md space-y-1 bg-inverse-surface dark:bg-on-background shadow-xl z-40">
+<div class="mb-xxl px-sm">
+<h1 class="text-headline-sm font-headline-sm font-bold text-white tracking-tight">HauteReserve</h1>
+<p class="text-body-sm font-body-sm text-surface-variant opacity-70">Admin Management</p>
+</div>
+<nav class="flex-grow space-y-1">
+<!-- Overview -->
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container rounded-lg shadow-sm font-bold scale-98 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="text-label-md font-label-md">Overview</span>
+</a>
+<!-- Reservations -->
+<a class="flex items-center gap-md px-md py-sm text-surface-variant dark:text-outline-variant hover:text-white hover:bg-surface-variant/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="text-label-md font-label-md">Reservations</span>
+</a>
+<!-- Tables -->
+<a class="flex items-center gap-md px-md py-sm text-surface-variant dark:text-outline-variant hover:text-white hover:bg-surface-variant/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-label-md font-label-md">Tables</span>
+</a>
+<!-- Analytics -->
+<a class="flex items-center gap-md px-md py-sm text-surface-variant dark:text-outline-variant hover:text-white hover:bg-surface-variant/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-md px-md py-sm text-surface-variant dark:text-outline-variant hover:text-white hover:bg-surface-variant/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="pt-xl border-t border-surface-variant/20">
+<div class="flex items-center gap-md px-sm py-md">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a luxury restaurant manager in a high-end tailored black suit, standing in a blurred elegant dining room with warm golden lighting. The photo is high-resolution, captured with a shallow depth of field, reflecting a serious yet hospitable leadership role within a modern fine-dining establishment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApVklQvYYyCspFerWM5Wo9dgF9F8086qmHq04duRwDYekQcNn8ppDfRNSR9CnQwOTKADfnmI6AEzomCY91PAd6n7uH7nHE2FF3fIsJu4c9pqd7GdEjldp-GBP4rJrUUkAOI_XmN2adffFcI5V34rmioEFcm4bisz_pYMOdbxI5hPSM28nEg871Dr_YBe8UbwYTsZIparc-6-4wRsczti2knAH0IOlJJI6CNk4o7DRK8IbNUfIPwdrJKZQIK2JwlR7Qd0wEfpi0-g"/>
+<div>
+<p class="text-label-md font-label-md text-white">Julian Vane</p>
+<p class="text-body-sm font-body-sm text-surface-variant">Head Administrator</p>
+</div>
+</div>
+<a class="flex items-center gap-md px-md py-sm text-surface-variant dark:text-outline-variant hover:text-white hover:bg-surface-variant/10 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-72 min-h-screen">
+<!-- TopNavBar (Management Type) -->
+<header class="flex items-center justify-between w-full px-lg py-sm sticky top-0 bg-surface-container-highest/80 backdrop-blur-xl border-b border-outline-variant z-30">
+<div class="flex items-center gap-md bg-white/50 px-md py-xs rounded-full border border-outline-variant focus-within:ring-2 focus-within:ring-primary transition-all w-96">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md w-full" placeholder="Search reservations, guests..." type="text"/>
+</div>
+<div class="flex items-center gap-xl">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-sm rounded-full transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-sm rounded-full transition-colors" data-icon="calendar_today">calendar_today</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-sm">
+<div class="text-right">
+<p class="text-label-md font-label-md text-on-surface">Main Dining Hall</p>
+<p class="text-[10px] uppercase font-bold text-primary">Live Status</p>
+</div>
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#4fdbc8]"></span>
+</div>
+</div>
+</header>
+<!-- Content Grid -->
+<section class="p-margin-desktop space-y-gutter">
+<!-- Page Title -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface tracking-tight">Executive Dashboard</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Real-time performance analytics for HauteReserve Main Branch.</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-sm bg-white border border-outline-variant rounded-lg text-label-md font-label-md hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span> Export Report
+                    </button>
+<button class="flex items-center gap-xs px-md py-sm bg-primary text-white rounded-lg text-label-md font-label-md hover:bg-primary-container transition-colors shadow-md">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span> New Reservation
+                    </button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="glass-card p-xl rounded-xl shadow-sm hover:shadow-md transition-all group">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-primary-fixed rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+</div>
+<span class="text-secondary text-label-sm font-label-sm">+12% vs last week</span>
+</div>
+<p class="text-on-surface-variant text-label-md font-label-md">Total Reservations</p>
+<h3 class="text-headline-md font-headline-md font-bold mt-xs">1,284</h3>
+</div>
+<div class="glass-card p-xl rounded-xl shadow-sm hover:shadow-md transition-all group border-l-4 border-l-secondary">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-secondary-fixed rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<span class="text-on-surface-variant text-label-sm font-label-sm">Active Now</span>
+</div>
+<p class="text-on-surface-variant text-label-md font-label-md">Today's Bookings</p>
+<h3 class="text-headline-md font-headline-md font-bold mt-xs">48</h3>
+</div>
+<div class="glass-card p-xl rounded-xl shadow-sm hover:shadow-md transition-all group">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-tertiary-fixed rounded-lg text-tertiary">
+<span class="material-symbols-outlined" data-icon="table_bar">table_bar</span>
+</div>
+<span class="text-error text-label-sm font-label-sm">Peak Hours Near</span>
+</div>
+<p class="text-on-surface-variant text-label-md font-label-md">Available Tables</p>
+<h3 class="text-headline-md font-headline-md font-bold mt-xs">14 <span class="text-body-sm font-normal text-outline">/ 42</span></h3>
+</div>
+<div class="glass-card p-xl rounded-xl shadow-sm hover:shadow-md transition-all group">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-surface-container-highest rounded-lg text-on-surface">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+<span class="text-secondary text-label-sm font-label-sm">+3.4%</span>
+</div>
+<p class="text-on-surface-variant text-label-md font-label-md">Occupancy Rate</p>
+<h3 class="text-headline-md font-headline-md font-bold mt-xs">82.5%</h3>
+</div>
+</div>
+<!-- Analytics Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Line Chart: Weekly Reservations -->
+<div class="lg:col-span-2 glass-card p-xl rounded-xl shadow-sm">
+<div class="flex justify-between items-center mb-xl">
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Weekly Reservations</h4>
+<select class="bg-transparent border-none text-label-sm font-label-sm focus:ring-0 cursor-pointer">
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+</div>
+<div class="h-64 flex items-end justify-between gap-sm relative pb-xl px-md">
+<!-- Simulated Chart Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between py-12 pointer-events-none opacity-10">
+<div class="border-t border-outline"></div>
+<div class="border-t border-outline"></div>
+<div class="border-t border-outline"></div>
+<div class="border-t border-outline"></div>
+</div>
+<!-- Simple Animated SVG for Line (Conceptual) -->
+<div class="absolute inset-x-0 bottom-16 h-32 px-md overflow-hidden opacity-20 pointer-events-none">
+<div class="w-full h-full bg-gradient-to-t from-primary to-transparent"></div>
+</div>
+<!-- Bar visualization for better visual clarity in CSS -->
+<div class="flex-grow h-full flex items-end justify-around gap-md relative z-10">
+<div class="w-full flex flex-col items-center">
+<div class="w-8 bg-primary/20 rounded-t-sm chart-bar hover:bg-primary/40 transition-colors" style="height: 60%"></div>
+<span class="text-[10px] mt-2 font-bold text-outline">MON</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="w-8 bg-primary/20 rounded-t-sm chart-bar hover:bg-primary/40 transition-colors" style="height: 45%"></div>
+<span class="text-[10px] mt-2 font-bold text-outline">TUE</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="w-8 bg-primary/20 rounded-t-sm chart-bar hover:bg-primary/40 transition-colors" style="height: 75%"></div>
+<span class="text-[10px] mt-2 font-bold text-outline">WED</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="w-8 bg-primary rounded-t-sm chart-bar shadow-lg shadow-primary/20" style="height: 95%"></div>
+<span class="text-[10px] mt-2 font-bold text-primary">THU</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="w-8 bg-primary/20 rounded-t-sm chart-bar hover:bg-primary/40 transition-colors" style="height: 65%"></div>
+<span class="text-[10px] mt-2 font-bold text-outline">FRI</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="w-8 bg-primary/20 rounded-t-sm chart-bar hover:bg-primary/40 transition-colors" style="height: 80%"></div>
+<span class="text-[10px] mt-2 font-bold text-outline">SAT</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="w-8 bg-primary/20 rounded-t-sm chart-bar hover:bg-primary/40 transition-colors" style="height: 50%"></div>
+<span class="text-[10px] mt-2 font-bold text-outline">SUN</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bar Chart: Peak Booking Hours -->
+<div class="glass-card p-xl rounded-xl shadow-sm">
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-xl">Peak Hours</h4>
+<div class="space-y-md">
+<div class="space-y-xs">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span>18:00 - 19:30</span>
+<span class="text-on-surface-variant">92% Capacity</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-error h-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span>19:30 - 21:00</span>
+<span class="text-on-surface-variant">100% Capacity</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-error h-full" style="width: 100%"></div>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span>21:00 - 22:30</span>
+<span class="text-on-surface-variant">74% Capacity</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full" style="width: 74%"></div>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between text-label-sm font-label-sm">
+<span>12:00 - 13:30 (Lunch)</span>
+<span class="text-on-surface-variant">58% Capacity</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 58%"></div>
+</div>
+</div>
+</div>
+<div class="mt-xl p-md bg-surface-container-low rounded-lg">
+<p class="text-body-sm font-body-sm text-on-surface-variant italic">"Friday late evening shows a 15% increase in VIP bookings compared to the monthly average."</p>
+</div>
+</div>
+</div>
+<!-- Recent Reservations Table -->
+<div class="glass-card rounded-xl shadow-sm overflow-hidden border border-outline-variant">
+<div class="p-xl flex justify-between items-center border-b border-outline-variant">
+<div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Recent Reservations</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Monitor live incoming requests.</p>
+</div>
+<div class="flex gap-sm">
+<button class="p-sm rounded-lg hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined" data-icon="filter_list">filter_list</span></button>
+<button class="p-sm rounded-lg hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-xl py-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Guest</th>
+<th class="px-xl py-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Time</th>
+<th class="px-xl py-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Table</th>
+<th class="px-xl py-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Covers</th>
+<th class="px-xl py-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-xl py-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-xl py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-xs">SM</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Sophia Moretti</p>
+<p class="text-[10px] text-outline">Gold Member</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-md text-body-sm font-body-sm text-on-surface">19:30 PM</td>
+<td class="px-xl py-md text-body-sm font-body-sm text-on-surface">T-12 (Window)</td>
+<td class="px-xl py-md text-body-sm font-body-sm text-on-surface">4 Pax</td>
+<td class="px-xl py-md">
+<span class="inline-flex items-center gap-1 px-sm py-xs bg-secondary-container/30 text-on-secondary-container text-[10px] font-bold rounded-full uppercase">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span> Confirmed
+                                    </span>
+</td>
+<td class="px-xl py-md">
+<button class="text-primary hover:underline text-label-sm font-label-sm">View Details</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-xl py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface font-bold text-xs">AJ</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Alexander James</p>
+<p class="text-[10px] text-outline">New Guest</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-md text-body-sm font-body-sm text-on-surface">20:00 PM</td>
+<td class="px-xl py-md text-body-sm font-body-sm text-on-surface">T-04 (Lounge)</td>
+<td class="px-xl py-md text-body-sm font-body-sm text-on-surface">2 Pax</td>
+<td class="px-xl py-md">
+<span class="inline-flex items-center gap-1 px-sm py-xs bg-primary-fixed-dim/30 text-on-primary-fixed-variant text-[10px] font-bold rounded-full uppercase">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Seated
+                                    </span>
+</td>
+<td class="px-xl py-md">
+<button class="text-primary hover:underline text-label-sm font-label-sm">View Details</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-xl py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-xs">LW</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Liam Walker</p>
+<p class="text-[10px] text-outline">Frequent Guest</p>
+</div>
+</div>
+</td>
+<td class="px-xl py-md text-body-sm font-body-sm text-on-surface">20:15 PM</td>
+<td class="px-xl py-md text-body-sm font-body-sm text-on-surface">T-18 (Private)</td>
+<td class="px-xl py-md text-body-sm font-body-sm text-on-surface">6 Pax</td>
+<td class="px-xl py-md">
+<span class="inline-flex items-center gap-1 px-sm py-xs bg-error-container/30 text-on-error-container text-[10px] font-bold rounded-full uppercase">
+<span class="w-1.5 h-1.5 bg-error rounded-full animate-pulse"></span> Arrived
+                                    </span>
+</td>
+<td class="px-xl py-md">
+<button class="text-primary hover:underline text-label-sm font-label-sm">View Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-md bg-surface-container-lowest text-center">
+<button class="text-label-md font-label-md text-primary hover:text-on-primary-container transition-colors">View All 12 Active Reservations</button>
+</div>
+</div>
+</section>
+<!-- Dynamic Feedback Panel (Bottom Floating) -->
+<div class="fixed bottom-margin-desktop right-margin-desktop z-50">
+<button class="w-14 h-14 bg-on-background text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all group" id="quick-action-btn">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="absolute right-full mr-md px-md py-sm bg-inverse-surface text-white text-body-sm rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">Quick Admin Support</span>
+</button>
+</div>
+</main>
+<script>
+        // Simple Interaction logic
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("HauteReserve Admin Dashboard Initialized");
+
+            // Chart bar animation trigger
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach(bar => {
+                const targetHeight = bar.style.height;
+                bar.style.height = '0px';
+                setTimeout(() => {
+                    bar.style.height = targetHeight;
+                }, 300);
+            });
+
+            // Quick Sidebar Hover Micro-interaction
+            const navLinks = document.querySelectorAll('aside nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    navLinks.forEach(l => {
+                        l.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm', 'font-bold', 'scale-98');
+                        l.classList.add('text-surface-variant', 'dark:text-outline-variant');
+                    });
+                    link.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm', 'font-bold', 'scale-98');
+                    link.classList.remove('text-surface-variant', 'dark:text-outline-variant');
+                });
+            });
+        });
+    </script>
+</body></html>
