@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HauteReserve | Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#006f64",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#585be6",
+                        "tertiary": "#3e3fcc",
+                        "on-secondary-fixed-variant": "#005048",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-tint": "#0053db",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-secondary-fixed": "#00201c",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-tertiary-container": "#f1eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "secondary": "#006b5f",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed": "#71f8e4",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-container": "#2563eb",
+                        "secondary-container": "#6df5e1",
+                        "primary": "#004ac6",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "outline-variant": "#c3c6d7",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#434655",
+                        "outline": "#737686",
+                        "on-surface": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container": "#e5eeff",
+                        "surface": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .login-card-shadow {
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.05), 0px 4px 6px -2px rgba(0,0,0,0.02);
+        }
+        .bg-glass {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden h-screen">
+<!-- Main Container -->
+<main class="flex h-full w-full">
+<!-- Left Side: Image Content (Hidden on Mobile, or stacks) -->
+<section class="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-inverse-surface">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-10000 hover:scale-110" data-alt="A cinematic, high-resolution photograph of a luxurious, high-end restaurant dining room at twilight. The scene is illuminated by warm candlelight on intimate circular tables draped in white linen. Deep shadows and soft amber lighting create a sophisticated, moody atmosphere. In the background, large floor-to-ceiling windows reveal a blurred city skyline. The color palette is dominated by rich ebony, deep mahogany, and warm golden glows, perfectly aligning with a premium corporate modern aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDjDXtxhVbsLM3nERdH1MLpl_5g3Qyhc32H-39VNz2LtJtw-QwuO5eupVxVinIYFBCfOCGVxqOWmCjfgapAyeBMfLhquPpoRVsjyU4JVTdSH6jHHeUy0Ud6atgeqbcz362aDaB3yqLi0HBQtR-cTQaeAes_FsdhA7OAfc0Bkx4vfRAC3u9FD6_Sb7AKHdIsWJNZie5ek5ryRDzKHTxIau-fkoJOW1uk2RvnH6C8R3NPsSjQ-hF0ICHlBmb1xIpx5kUiYboY2vw3Kw')">
+</div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-tr from-on-background/80 via-transparent to-transparent"></div>
+</div>
+<!-- Brand Identity on Image -->
+<div class="relative z-10 p-margin-desktop flex flex-col justify-between h-full w-full">
+<div class="flex items-center space-x-2">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-white tracking-tight font-bold">HauteReserve</span>
+</div>
+<div class="max-w-md">
+<h1 class="font-display-lg text-display-lg text-white mb-sm">Master the art of service.</h1>
+<p class="font-body-lg text-body-lg text-white/80">Experience the world's most precise reservation management system designed for the culinary elite.</p>
+</div>
+</div>
+</section>
+<!-- Right Side: Login Form -->
+<section class="w-full lg:w-1/2 flex items-center justify-center bg-surface-container-lowest p-margin-mobile relative">
+<!-- Mobile Logo Only -->
+<div class="absolute top-8 left-margin-mobile lg:hidden flex items-center space-x-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">HauteReserve</span>
+</div>
+<div class="w-full max-w-[440px] px-sm md:px-0">
+<!-- Mobile Card Styling (as requested: 16px/rounded-xl) -->
+<div class="bg-surface lg:bg-transparent p-gutter lg:p-0 rounded-xl login-card-shadow lg:shadow-none border border-outline-variant lg:border-none">
+<header class="mb-xl text-center lg:text-left">
+<h2 class="font-headline-lg text-headline-lg lg:text-[32px] lg:leading-[40px] text-on-surface mb-xs">Welcome back</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Please enter your credentials to access the portal.</p>
+</header>
+<form class="space-y-lg" id="loginForm" onsubmit="return false">
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="email">Email Address</label>
+<div class="relative group">
+<input class="w-full h-[48px] px-md bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200 outline-none placeholder:text-outline" id="email" placeholder="name@restaurant.com" required="" type="email"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary" data-icon="mail">mail</span>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center px-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="password">Password</label>
+<a class="font-label-md text-label-md text-primary hover:underline transition-all" href="#">Forgot Password?</a>
+</div>
+<div class="relative group">
+<input class="w-full h-[48px] px-md bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200 outline-none placeholder:text-outline" id="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" data-icon="visibility" id="passwordToggleIcon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me (Micro-interaction) -->
+<div class="flex items-center space-x-2 px-1">
+<input class="w-4 h-4 text-primary bg-surface-container-lowest border-outline-variant rounded focus:ring-primary" id="remember" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface-variant cursor-pointer select-none" for="remember">Remember this device</label>
+</div>
+<!-- Login Button -->
+<button class="w-full h-[52px] bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-sm hover:shadow-md hover:bg-primary-container active:scale-[0.98] transition-all duration-200 flex items-center justify-center space-x-2" type="submit">
+<span>Login to Dashboard</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Social/Divider -->
+<div class="relative py-md">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant"></div>
+</div>
+<div class="relative flex justify-center text-label-sm uppercase">
+<span class="bg-surface-container-lowest lg:bg-surface-container-lowest px-md text-on-surface-variant font-label-sm">Or continue with</span>
+</div>
+</div>
+<!-- Social Login Buttons -->
+<div class="grid grid-cols-2 gap-gutter">
+<button class="flex items-center justify-center h-[44px] border border-outline-variant rounded-lg bg-white hover:bg-surface-container-low transition-colors" type="button">
+<img alt="Google" class="w-5 h-5 mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACQ2dWljzt0L8_x52Ms_o-YtHCb1lG3ySMaNVzna7JmssiZ3SN2wA47mUXwPtgPhFihuyss4TaYcVUDc7OKKJCSQmoDRCBYO8klFafozTbaKS2de0vU4ofrt6wD0sJIPt1heoQyZ5BFfxV-y9aqIAEc5-wHt3qRTfPa2gKGMYcTd8TS6Kn4gGRXekxbdYjNi6KcKPcFOdhi1-18tmQDOouBI4DwT_3ti3wlQmdakTkVdrFrK-XylncqK3dz2bGzN0TwKZwYaMFUw"/>
+<span class="font-label-md text-label-md text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center h-[44px] border border-outline-variant rounded-lg bg-white hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined mr-2 text-on-surface" data-icon="apple">apps</span>
+<span class="font-label-md text-label-md text-on-surface">Apple</span>
+</button>
+</div>
+</form>
+<footer class="mt-xl text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Don't have an account? 
+                            <a class="font-label-md text-label-md text-primary font-bold hover:underline ml-1" href="#">Register Now</a>
+</p>
+</footer>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="absolute bottom-8 w-full px-margin-mobile flex justify-between items-center max-w-[440px] lg:max-w-none lg:px-margin-desktop">
+<span class="font-label-sm text-label-sm text-outline">© 2024 DineMaster Pro</span>
+<div class="flex space-x-xl">
+<a class="font-label-sm text-label-sm text-outline hover:text-on-surface-variant transition-colors" href="#">Privacy</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-on-surface-variant transition-colors" href="#">Terms</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-on-surface-variant transition-colors" href="#">Support</a>
+</div>
+</div>
+</section>
+</main>
+<script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const icon = document.getElementById('passwordToggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.innerText = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                icon.innerText = 'visibility';
+            }
+        }
+
+        // Add some atmospheric micro-interactions
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

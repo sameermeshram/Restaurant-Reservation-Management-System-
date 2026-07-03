@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HauteReserve | The Art of Dining, Simplified</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#006f64",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#585be6",
+                        "tertiary": "#3e3fcc",
+                        "on-secondary-fixed-variant": "#005048",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-tint": "#0053db",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-secondary-fixed": "#00201c",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-tertiary-container": "#f1eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "secondary": "#006b5f",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed": "#71f8e4",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-container": "#2563eb",
+                        "secondary-container": "#6df5e1",
+                        "primary": "#004ac6",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "outline-variant": "#c3c6d7",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#434655",
+                        "outline": "#737686",
+                        "on-surface": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container": "#e5eeff",
+                        "surface": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(248, 249, 255, 0.0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-nav.scrolled {
+            background: rgba(248, 249, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(11, 28, 48, 0.4), rgba(11, 28, 48, 0.7));
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Top Navigation -->
+<nav class="fixed top-0 left-0 w-full z-[100] h-20 glass-nav" id="top-nav">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-7xl mx-auto h-full">
+<!-- Brand Logo -->
+<div class="text-headline-md font-headline-md font-bold text-white transition-colors duration-300" id="nav-logo">
+                DineMaster Pro
+            </div>
+<!-- Links (Hidden on Mobile) -->
+<div class="hidden md:flex items-center space-x-xl">
+<a class="text-label-md font-label-md text-white/90 hover:text-white transition-colors" href="#">Explore</a>
+<a class="text-label-md font-label-md text-white/90 hover:text-white transition-colors" href="#">Restaurants</a>
+<a class="text-label-md font-label-md text-white/90 hover:text-white transition-colors" href="#">Corporate</a>
+<div class="h-6 w-[1px] bg-white/20"></div>
+<a class="text-label-md font-label-md text-white transition-all hover:opacity-80" href="#">Login</a>
+<button class="bg-primary hover:bg-primary/90 text-on-primary px-lg py-sm rounded-lg font-label-md transition-all active:scale-95 shadow-lg">
+                    Register
+                </button>
+</div>
+<!-- Mobile Menu Trigger -->
+<button class="md:hidden text-white" id="mobile-menu-btn">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative w-full h-[921px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A cinematic, low-angle shot of a high-end luxury restaurant interior at twilight. The scene features dark polished wood tables, crystal glassware catching golden amber light from minimalist pendant fixtures, and plush velvet seating. The atmosphere is sophisticated and quiet, with a deep navy and charcoal color palette accentuated by warm, soft glow lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBsoA2RFu6JguLC4pHBDjBzAQz8f6pmrjaE6tU2A5CwGpIlmXHm5khKLwz-_eKtjLWwdeAs8HBouAg3hFVnHupimeq1EM8hfEKwixKRlYQzAtc77i9zC_h5EuH7L8QE00EPBnfbk9ErmQa5fzOJRgYuREuoEN_orp8SMAysjaFf9qWWYB4-zMjTva2QhdZfGzU8b5MEVzLBBOtdogldEOxnkVjsZe2WkGqeuES_N7Hk0BKKaoWKMZdDdasczQkLM3SSeb2NB2O6QA')"></div>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative z-10 w-full px-margin-desktop max-w-7xl mx-auto flex flex-col items-center text-center">
+<span class="inline-block px-md py-xs rounded-full bg-primary/20 border border-primary/30 text-primary-fixed text-label-sm font-label-sm mb-lg animate-fade-in">
+                EXCEPTIONAL DINING AWAITS
+            </span>
+<h1 class="text-white font-display-lg text-display-lg max-w-4xl leading-tight mb-xl tracking-tight">
+                The Art of Dining, <span class="text-primary-fixed">Simplified.</span>
+</h1>
+<p class="text-white/80 font-body-lg text-body-lg max-w-2xl mb-xxl">
+                Elevate your culinary journey with instant access to the world's most prestigious tables. Experience seamless reservations and personalized service at your fingertips.
+            </p>
+<div class="flex flex-col sm:flex-row gap-md w-full sm:w-auto">
+<button class="bg-primary hover:bg-primary-container text-on-primary px-xxl py-md rounded-xl font-headline-sm transition-all active:scale-95 shadow-2xl flex items-center justify-center gap-sm">
+                    Book a Table
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-xxl py-md rounded-xl font-headline-sm transition-all flex items-center justify-center">
+                    Explore Menu
+                </button>
+</div>
+</div>
+<!-- Bottom Fade -->
+<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent"></div>
+</header>
+<!-- Intro / Spotlight Section -->
+<section class="py-xxl w-full bg-background relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xxl items-center">
+<!-- Asymmetric Image Layout -->
+<div class="lg:col-span-7 relative">
+<div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform lg:-rotate-2 hover:rotate-0 transition-transform duration-700">
+<img class="w-full h-[500px] object-cover" data-alt="A high-definition, close-up culinary shot of a Michelin-star chef meticulously plating a vibrant dish in a clean, modern kitchen. The plate features an artistic arrangement of colorful organic vegetables and a perfectly seared piece of protein. The lighting is bright and clinical but warm, with soft bokeh in the background emphasizing the chef's hands and the precision of the tools." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQdCy44VTUY0qfGZMm6uhx-dg2lXekbxgNZOjF2gvJAhi66kgoUewP-iM-sq_ylOIsd0_bzbD_i-LZKVEiy9DTJVN5Kj-4qU7CfwadW93FHs42zWHBP4t-X9fPOMXVxYI3hMJTU1a6CPgccrTisSP9XX__kFQnhHIXaD6b8WP-4Elq5EqPAVSxJsq9YSubfSsfNl0CBGuf90t8MDV29FcBEfVJl2qKjDyShuhsHludzODTMiZ_96_e_Qrfam1bpmVnhyFUBTR4qQ"/>
+</div>
+<div class="absolute -bottom-xl -right-xl z-20 hidden md:block w-72 aspect-square rounded-2xl overflow-hidden border-8 border-background shadow-xl transform rotate-3">
+<img class="w-full h-full object-cover" data-alt="An overhead flat-lay shot of a gourmet seafood appetizer on a textured ceramic plate. The composition is minimalist and high-contrast, featuring deep greens and bright citrus yellows. The lighting is crisp and natural, highlighting the delicate textures of the ingredients. The background is a white marble tabletop, fitting a luxurious light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmrjWjagheEqXs_E6SGlBL8UlY_UV_LC_1biJAegDhISAtReagO7KyT3nPu0HsTgXHcBVuGwae1SGX3RFfU4I7YSsp3OsGP3YTGZmI2EX76IL6OVyEp4HGIlDXGRJ-eDr79UMIhfHptUqzuaoZz9a0yvCQ09SOEoYU0xuIJvekDoUG4oCCHmZBUga3Xa3B7dJkI1RhP3WcqoJXqUIYvYqo1bcr5G6dhDOi8Db5X2h4Doc-zEdm1QtwIUz_kDik2ldthDANlI7kSg"/>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -top-xl -left-xl w-64 h-64 bg-primary/5 rounded-full blur-3xl z-0"></div>
+</div>
+<div class="lg:col-span-5 flex flex-col space-y-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Curated by Gastronomy Experts</h2>
+<div class="w-16 h-1 bg-primary"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        HauteReserve isn't just a platform; it's your personal concierge to the culinary elite. We partner exclusively with establishments that define excellence in flavor, service, and ambiance.
+                    </p>
+<div class="flex items-center gap-md p-md bg-surface-container rounded-xl border border-outline-variant">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">verified</span>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm">Elite Partners</p>
+<p class="text-body-sm text-on-surface-variant">Over 500 Michelin-starred partners globally.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section (Bento Grid Style) -->
+<section class="py-xxl bg-surface-container-low overflow-hidden">
+<div class="max-w-7xl mx-auto px-margin-desktop">
+<div class="text-center mb-xxl">
+<h2 class="font-headline-lg text-headline-lg mb-md">SaaS Performance, Hospitality Soul</h2>
+<p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">Our technology works behind the scenes to ensure your arrival is as seamless as your meal.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Feature 1 -->
+<div class="group bg-surface hover:bg-white p-xl rounded-2xl border border-outline-variant hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="w-14 h-14 rounded-xl bg-primary-fixed-dim/20 flex items-center justify-center text-primary mb-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">update</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-md">Real-time availability</h3>
+<p class="text-body-md text-on-surface-variant">Never see a stale listing. Our deep integration with restaurant POS systems ensures what you see is what you get.</p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="group bg-primary text-on-primary p-xl rounded-2xl shadow-xl flex flex-col justify-between transform md:-translate-y-4">
+<div>
+<div class="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-white mb-lg group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined text-[32px]">flash_on</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-md">Instant confirmation</h3>
+<p class="text-on-primary/80">No more waiting for callbacks. Your table is secured the millisecond you click 'Book', with automated calendar sync.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="group bg-surface hover:bg-white p-xl rounded-2xl border border-outline-variant hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="w-14 h-14 rounded-xl bg-tertiary-fixed-dim/20 flex items-center justify-center text-tertiary mb-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">line_style</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-md">Personalized dining</h3>
+<p class="text-body-md text-on-surface-variant">Save preferences, dietary needs, and favorite tables. We communicate your unique needs to the maître d' for you.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Divider with Animation -->
+<section class="h-64 relative bg-background flex items-center justify-center">
+
+<div class="relative z-10 text-center px-margin-mobile">
+<blockquote class="font-display-lg text-headline-lg italic text-on-surface-variant opacity-60">
+                "The table is where life happens."
+            </blockquote>
+</div>
+</section>
+<!-- Call to Action / Final Image -->
+<section class="py-xxl bg-inverse-surface text-white">
+<div class="max-w-7xl mx-auto px-margin-desktop">
+<div class="rounded-3xl overflow-hidden relative h-[400px] flex items-center p-xl lg:p-xxl">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A cozy but elegant interior view of a high-end bistro bar area. Warm amber lighting reflects off brass accents and dark marble countertops. Several artisanal cocktails are visible in the foreground, beautifully garnished. The mood is intimate and vibrant, set during a lively evening service. The color palette is rich with deep browns, golds, and emerald greens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnj9BB5ctjG9ciqZ362BQzXfwSf3dAmMJ9KqQA-rBM4H162WPEHJWqmBrlEJMYQX3I5CASfEsz9CRPVqy1ScNaOTSnQ49_m_Q-6BqNj-lVsDkxlhynAefDw6PvSGYIltOQUUPTLsWutcZvwxDPeiE2W0D_jl_Rz2Hcgt46uKK49-FeIHlBAKjRVO6XwWPHEYTuZbrTnJL27T4HENyL0Lq7P2ek-nN7hEBstsHc_j7y0xcxqKlj6JsXLghDq5P06_CLUvq3C9QwIA"/>
+<div class="absolute inset-0 bg-black/60"></div>
+</div>
+<div class="relative z-10 max-w-xl flex flex-col space-y-lg">
+<h2 class="font-display-lg text-headline-lg lg:text-display-lg">Ready for an unforgettable evening?</h2>
+<p class="text-body-lg text-white/70">Join thousands of discerning diners and secure your spot at the city's most coveted destinations.</p>
+<div class="flex gap-md">
+<button class="bg-primary hover:bg-primary-container text-on-primary px-xl py-md rounded-xl font-headline-sm transition-all active:scale-95 shadow-lg">
+                            Get Started
+                        </button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-xl py-md rounded-xl font-headline-sm transition-all border border-white/20">
+                            View All Cities
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-highest py-xxl">
+<div class="max-w-7xl mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-xl">
+<div class="md:col-span-1">
+<div class="text-headline-sm font-headline-sm font-bold text-primary mb-lg">DineMaster Pro</div>
+<p class="text-body-sm text-on-surface-variant mb-lg">Redefining the reservation experience for the modern epicurean.</p>
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">public</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">alternate_email</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">share</span>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-md">RESOURCES</h4>
+<ul class="space-y-sm">
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Our Story</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Restaurant Portal</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Cities</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Concierge</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-md">SUPPORT</h4>
+<ul class="space-y-sm">
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Help Center</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Trust &amp; Safety</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Contact Us</a></li>
+<li><a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-md">NEWSLETTER</h4>
+<p class="text-body-sm text-on-surface-variant mb-md">Be the first to know about new restaurant openings.</p>
+<div class="flex gap-xs">
+<input class="bg-surface rounded-lg border-outline-variant text-body-sm focus:ring-primary focus:border-primary flex-1" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-primary px-md rounded-lg text-body-sm">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-margin-desktop mt-xxl pt-lg border-t border-outline-variant flex flex-col md:flex-row justify-between items-center text-body-sm text-on-surface-variant opacity-60">
+<p>© 2024 DineMaster Pro. All rights reserved.</p>
+<div class="flex gap-lg mt-md md:mt-0">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+<a href="#">Cookies</a>
+</div>
+</div>
+</footer>
+<!-- Bottom Nav for Mobile (Using Predicted Component Logic) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 pb-safe bg-surface shadow-[0_-4px_10px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm-mobile">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">add_box</span>
+<span class="text-label-sm font-label-sm-mobile">Book</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="text-label-sm font-label-sm-mobile">Trips</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-label-sm font-label-sm-mobile">Profile</span>
+</a>
+</nav>
+<script>
+        // Scroll interaction for the Top Nav
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('top-nav');
+            const logo = document.getElementById('nav-logo');
+            const links = document.querySelectorAll('.md\\:flex a');
+            
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+                logo.classList.replace('text-white', 'text-primary');
+                links.forEach(link => {
+                    link.classList.replace('text-white/90', 'text-on-surface-variant');
+                    link.classList.replace('text-white', 'text-on-surface-variant');
+                });
+            } else {
+                nav.classList.remove('scrolled');
+                logo.classList.replace('text-primary', 'text-white');
+                links.forEach(link => {
+                    link.classList.replace('text-on-surface-variant', 'text-white/90');
+                    if(link.innerText === 'Login') link.classList.add('text-white');
+                });
+            }
+        });
+
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.95)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HauteReserve | Customer Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-skeleton { animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#006f64",
+                      "surface-container-low": "#eff4ff",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "tertiary-container": "#585be6",
+                      "tertiary": "#3e3fcc",
+                      "on-secondary-fixed-variant": "#005048",
+                      "surface-bright": "#f8f9ff",
+                      "inverse-surface": "#213145",
+                      "surface-tint": "#0053db",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#2f2ebe",
+                      "secondary-fixed-dim": "#4fdbc8",
+                      "surface-variant": "#d3e4fe",
+                      "tertiary-fixed": "#e1e0ff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-secondary-fixed": "#00201c",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#00174b",
+                      "tertiary-fixed-dim": "#c0c1ff",
+                      "on-tertiary-container": "#f1eeff",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#f8f9ff",
+                      "on-tertiary-fixed": "#07006c",
+                      "secondary": "#006b5f",
+                      "on-error-container": "#93000a",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-primary-container": "#eeefff",
+                      "secondary-fixed": "#71f8e4",
+                      "surface-container-highest": "#d3e4fe",
+                      "primary-container": "#2563eb",
+                      "secondary-container": "#6df5e1",
+                      "primary": "#004ac6",
+                      "surface-dim": "#cbdbf5",
+                      "on-background": "#0b1c30",
+                      "inverse-primary": "#b4c5ff",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dbe1ff",
+                      "outline-variant": "#c3c6d7",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#434655",
+                      "outline": "#737686",
+                      "on-surface": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "surface-container": "#e5eeff",
+                      "surface": "#f8f9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "xl": "32px",
+                      "xxl": "48px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background">
+<!-- Sidebar (Shared Component) -->
+<aside class="fixed left-0 h-screen w-72 bg-surface-container-lowest dark:bg-surface-container-low border-r border-outline-variant shadow-md flex flex-col p-md h-full space-y-2 z-40">
+<div class="mb-xxl px-sm">
+<span class="text-headline-sm font-headline-sm font-black text-primary">HauteReserve</span>
+</div>
+<nav class="flex-grow space-y-1">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center space-x-3 px-md py-3 bg-secondary-container text-on-secondary-container rounded-lg font-semibold transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 px-md py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-label-md font-label-md">My Reservations</span>
+</a>
+<a class="flex items-center space-x-3 px-md py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-label-md font-label-md">Create Reservation</span>
+</a>
+<a class="flex items-center space-x-3 px-md py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+</nav>
+<div class="pt-xl mt-auto border-t border-outline-variant">
+<div class="flex items-center space-x-3 p-sm mb-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A sophisticated professional headshot of a premium restaurant customer, looking friendly and stylish. The lighting is soft and warm, typical of a high-end luxury lounge, with a blurred background showing elegant interior decor in shades of slate and gold." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsdW_rY8V6P5bSqiAMDz17RJVQXyqNBe7HIF-FArKDJByG4CiAO0AMi6klBaPnIPOlQfRTkUNxLsfjTFYhgSjpDxZoxMfRy5qTtwhdd2cj3Gsq7XNOIJXNczZkw1mwoWTvPcifkJQtoKf8TOlJXt-UhXdRFokrT_vcH9kjOSKTKbUI2WgAY8lIny28NNRe5LS_hWAjNscONzpKwrsyI8aof-2r3of0HUF4O1ONvWi2pY-AO7Ovty-Gel_t4fCTI7sS_6NHYCZ2AQ"/>
+</div>
+<div>
+<p class="text-label-md font-label-md font-bold text-on-surface">Guest User</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Customer Portal</p>
+</div>
+</div>
+<a class="flex items-center space-x-3 px-md py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-72 min-h-screen flex flex-col">
+<!-- Top Sticky Header -->
+<header class="sticky top-0 z-30 bg-surface/90 backdrop-blur-md border-b border-outline-variant flex items-center justify-between w-full px-lg py-sm h-16">
+<div class="flex items-center space-x-gutter">
+<div class="flex items-center bg-surface-container-high rounded-full px-md py-xs border border-outline-variant group focus-within:ring-2 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] mr-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm text-on-surface w-64 placeholder:text-on-surface-variant" placeholder="Search restaurants..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-md">
+<button class="p-xs hover:bg-surface-container-high rounded-full relative transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-xs"></div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-xl py-sm rounded-lg font-label-md text-label-md transition-all active:scale-95 shadow-sm">
+                    Reserve a Table
+                </button>
+</div>
+</header>
+<div class="p-margin-desktop space-y-xxl max-w-[1600px]">
+<!-- Welcome Section -->
+<section>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Welcome back, Julian!</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mt-xs">Ready for your next culinary adventure?</p>
+</section>
+<!-- Layout Grid: Content + Notifications -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Primary Content -->
+<div class="col-span-12 lg:col-span-8 space-y-xxl">
+<!-- Upcoming Reservations (Horizontal Scroll) -->
+<section>
+<div class="flex justify-between items-end mb-lg">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Upcoming Reservations</h2>
+<a class="text-primary text-label-md font-label-md hover:underline" href="#">View All</a>
+</div>
+<div class="flex space-x-gutter overflow-x-auto pb-md hide-scrollbar">
+<!-- Card 1 -->
+<div class="flex-shrink-0 w-80 bg-surface border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-shadow group cursor-pointer overflow-hidden">
+<div class="h-32 w-full bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="Exquisite interior of a high-end Michelin-star restaurant in Paris. Dim, atmospheric lighting highlights velvet seating, crisp white linen tablecloths, and sparkling crystal glassware. A subtle glow from a designer chandelier casts a warm, inviting ambiance across the refined architectural space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdrkPeNJPV6_lVKCkuTZWcMb3kyxqBP0XAPTHapAZhxriMIG4Rm7cqaLbeN592FfOfcjjHYml7ry540JCBFocg16gEQflkoOAGXmjzdy_jgJ740NTNFh_2m4yR5Oeonm3Atsr5pH21ztglKS64TZa946pO68WNGgO7NKwUmxxiH_rprsYv4bah4Fnxxi9u2CO5oW9FjMCT_aAkIfscdl8yGbeDfkU-qjhp-kyB8qhCXpIQZwe_weND0Z8yv-yaR6yqdMf67lsJHQ"/>
+<div class="absolute top-sm right-sm bg-success-container/90 backdrop-blur text-secondary px-sm py-1 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full mr-1.5"></span>
+                                        Confirmed
+                                    </div>
+</div>
+<div class="p-md space-y-sm">
+<h3 class="font-bold text-on-surface text-body-lg">L'Ambroisie</h3>
+<div class="flex items-center text-on-surface-variant space-x-md">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-xs">calendar_today</span>
+<span class="text-body-sm">Oct 24, 2023</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-xs">schedule</span>
+<span class="text-body-sm">20:30</span>
+</div>
+</div>
+<div class="flex items-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-xs">group</span>
+<span class="text-body-sm">4 Guests</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex-shrink-0 w-80 bg-surface border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-shadow group cursor-pointer overflow-hidden">
+<div class="h-32 w-full bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A modern, high-tech Japanese fusion restaurant with a dark, sleek aesthetic. Neon blue accents reflect off polished black stone counters where chefs are meticulously preparing sashimi. The atmosphere is vibrant and energetic, blending traditional Japanese minimalism with futuristic urban design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFS5s0r7eVf1tPYWQBbRsUGMX2bxLwhpDZocW4EVPqw8jrjIjdPtKLpueXyP-tfchPzoBGt2p8oYWC9PViL0o6qU-gc7L8t1mJFoatWLzBbqm1hYH6MXFANkKRUlQ787VzHoBnOnbNU_5LM2OFi9tdt-30ph4Uz4MmQ1Dy14yPMtC8ZUy16TLMq2P76c8b_Aq91_4fbEObSP8Izc1U3qqpZHk1W3RFKOApbR3ygZ-LVzAsO3sZI2aWR8SGdBNy2R7v3HXjWgg4pw"/>
+<div class="absolute top-sm right-sm bg-orange-100 text-orange-700 px-sm py-1 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center border border-orange-200">
+<span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-1.5 animate-pulse"></span>
+                                        Pending
+                                    </div>
+</div>
+<div class="p-md space-y-sm">
+<h3 class="font-bold text-on-surface text-body-lg">Kyoto Bloom</h3>
+<div class="flex items-center text-on-surface-variant space-x-md">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-xs">calendar_today</span>
+<span class="text-body-sm">Nov 02, 2023</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-xs">schedule</span>
+<span class="text-body-sm">19:00</span>
+</div>
+</div>
+<div class="flex items-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-xs">group</span>
+<span class="text-body-sm">2 Guests</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex-shrink-0 w-80 bg-surface border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-shadow group cursor-pointer overflow-hidden">
+<div class="h-32 w-full bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A sun-drenched rooftop terrace restaurant overlooking the Mediterranean coast. Azure blue waters meet the horizon, framed by white stucco walls and vibrant pink bougainvillea. The setting is breezy and luxurious, with light wood furniture and linen umbrellas creating a perfect summer vacation vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWGUDBiD3az_AhwMCaETrgiG8QwR-gcVZFbKWe4_-kNkQouMQHpXtKLQ8lKsdwMwUAWLXSL02xCj6RwDdVJL_JqH0uHgWln2YG1BBn47P1d4dyVEPV02DTa49lesIPr9FCtEYtTMUp0SFZnxAKkYfXpERJHSDcuFdqIS4kWOylH0liKoqlBIq5dCLjroFwSKgSr55vINtKJ9hDfToNCpDgxt0Lem-lAAQn7V1krkX6l_nbTRmcmTmgX79jnSLVkWgBjQX_QAYgzg"/>
+<div class="absolute top-sm right-sm bg-success-container/90 backdrop-blur text-secondary px-sm py-1 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full mr-1.5"></span>
+                                        Confirmed
+                                    </div>
+</div>
+<div class="p-md space-y-sm">
+<h3 class="font-bold text-on-surface text-body-lg">Azure Terrace</h3>
+<div class="flex items-center text-on-surface-variant space-x-md">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-xs">calendar_today</span>
+<span class="text-body-sm">Nov 15, 2023</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-xs">schedule</span>
+<span class="text-body-sm">13:30</span>
+</div>
+</div>
+<div class="flex items-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] mr-xs">group</span>
+<span class="text-body-sm">6 Guests</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity Table -->
+<section>
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-lg">Recent Activity</h2>
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-lg py-md text-label-md font-label-md text-on-surface-variant">Restaurant</th>
+<th class="px-lg py-md text-label-md font-label-md text-on-surface-variant">Date</th>
+<th class="px-lg py-md text-label-md font-label-md text-on-surface-variant">Party Size</th>
+<th class="px-lg py-md text-label-md font-label-md text-on-surface-variant">Status</th>
+<th class="px-lg py-md text-label-md font-label-md text-on-surface-variant">Total</th>
+</tr>
+</thead>
+<tbody id="activity-table-body">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md text-body-md font-medium">The Gilded Fork</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">Oct 12, 2023</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">2</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-sm py-0.5 rounded-full text-[12px] font-medium bg-green-50 text-green-700 border border-green-200">
+                                                Confirmed
+                                            </span>
+</td>
+<td class="px-lg py-md text-body-sm font-semibold">$245.00</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors">
+<td class="px-lg py-md text-body-md font-medium">Oceanic Grill</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">Oct 08, 2023</td>
+<td class="px-lg py-md text-body-sm text-on-surface-variant">4</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-sm py-0.5 rounded-full text-[12px] font-medium bg-red-50 text-red-700 border border-red-200">
+                                                Cancelled
+                                            </span>
+</td>
+<td class="px-lg py-md text-body-sm font-semibold">$0.00</td>
+</tr>
+<!-- Skeleton Loader Row -->
+<tr class="animate-skeleton">
+<td class="px-lg py-md"><div class="h-4 bg-surface-container-high rounded w-32"></div></td>
+<td class="px-lg py-md"><div class="h-4 bg-surface-container-high rounded w-20"></div></td>
+<td class="px-lg py-md"><div class="h-4 bg-surface-container-high rounded w-8"></div></td>
+<td class="px-lg py-md"><div class="h-6 bg-surface-container-high rounded-full w-24"></div></td>
+<td class="px-lg py-md"><div class="h-4 bg-surface-container-high rounded w-16"></div></td>
+</tr>
+<tr class="animate-skeleton">
+<td class="px-lg py-md"><div class="h-4 bg-surface-container-high rounded w-28"></div></td>
+<td class="px-lg py-md"><div class="h-4 bg-surface-container-high rounded w-20"></div></td>
+<td class="px-lg py-md"><div class="h-4 bg-surface-container-high rounded w-8"></div></td>
+<td class="px-lg py-md"><div class="h-6 bg-surface-container-high rounded-full w-24"></div></td>
+<td class="px-lg py-md"><div class="h-4 bg-surface-container-high rounded w-16"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Right Column: Notifications Panel -->
+<div class="col-span-12 lg:col-span-4 space-y-xxl">
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg h-fit sticky top-24">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Notifications</h2>
+<span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded-full">3 NEW</span>
+</div>
+<div class="space-y-md">
+<!-- Notification 1 -->
+<div class="flex space-x-md p-md rounded-lg bg-surface-container-low border border-primary/10 cursor-pointer hover:border-primary/30 transition-all">
+<div class="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">stars</span>
+</div>
+<div>
+<p class="text-label-md font-bold text-on-surface">Loyalty Reward Earned!</p>
+<p class="text-body-sm text-on-surface-variant mt-0.5">You've unlocked Gold status at L'Ambroisie. Enjoy a complimentary toast.</p>
+<p class="text-[11px] text-primary font-bold mt-sm">2 hours ago</p>
+</div>
+</div>
+<!-- Notification 2 -->
+<div class="flex space-x-md p-md rounded-lg hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="flex-shrink-0 w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]">task_alt</span>
+</div>
+<div>
+<p class="text-label-md font-bold text-on-surface">Booking Confirmed</p>
+<p class="text-body-sm text-on-surface-variant mt-0.5">Your table at Azure Terrace for Nov 15 is now officially confirmed.</p>
+<p class="text-[11px] text-on-surface-variant font-medium mt-sm">Yesterday</p>
+</div>
+</div>
+<!-- Notification 3 -->
+<div class="flex space-x-md p-md rounded-lg hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="flex-shrink-0 w-10 h-10 bg-error/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+</div>
+<div>
+<p class="text-label-md font-bold text-on-surface">Restaurant Update</p>
+<p class="text-body-sm text-on-surface-variant mt-0.5">Oceanic Grill has updated their seasonal tasting menu for October.</p>
+<p class="text-[11px] text-on-surface-variant font-medium mt-sm">2 days ago</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-lg text-center py-sm text-label-md font-label-md text-primary hover:bg-primary-fixed transition-colors rounded-lg">
+                            Mark all as read
+                        </button>
+</section>
+<!-- Profile Quick Stats Card -->
+<div class="bg-inverse-surface text-surface rounded-xl p-lg space-y-md">
+<h3 class="text-label-md font-bold text-surface-variant uppercase tracking-widest">My Haute Status</h3>
+<div class="flex items-center space-x-md">
+<span class="text-display-lg font-display-lg text-primary-fixed">12</span>
+<div class="text-body-sm text-surface-variant">Reservations<br/>completed this year</div>
+</div>
+<div class="w-full bg-surface-variant/20 rounded-full h-1.5 mt-md">
+<div class="bg-primary-fixed h-full rounded-full w-[75%]"></div>
+</div>
+<p class="text-body-sm text-surface-variant">3 more bookings to Platinum level</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simulate skeleton loader transition
+            const tableBody = document.getElementById('activity-table-body');
+            const skeletons = tableBody.querySelectorAll('.animate-skeleton');
+            
+            setTimeout(() => {
+                skeletons.forEach(skel => {
+                    skel.style.opacity = '0';
+                    setTimeout(() => {
+                        skel.classList.add('hidden');
+                        // Optionally add real content here
+                    }, 500);
+                });
+            }, 3000);
+
+            // Active button scale effect
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+                btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+                btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+            });
+        });
+    </script>
+</body></html>

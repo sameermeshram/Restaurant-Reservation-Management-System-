@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DineMaster Pro | Reservation Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .skeleton {
+            background: linear-gradient(90deg, #eff4ff 25%, #dce9ff 50%, #eff4ff 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #d3e4fe; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #737686; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#006f64",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#585be6",
+                        "tertiary": "#3e3fcc",
+                        "on-secondary-fixed-variant": "#005048",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-tint": "#0053db",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-secondary-fixed": "#00201c",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-tertiary-container": "#f1eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "secondary": "#006b5f",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed": "#71f8e4",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-container": "#2563eb",
+                        "secondary-container": "#6df5e1",
+                        "primary": "#004ac6",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "outline-variant": "#c3c6d7",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#434655",
+                        "outline": "#737686",
+                        "on-surface": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container": "#e5eeff",
+                        "surface": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Admin Side Bar -->
+<nav class="fixed left-0 h-screen w-72 bg-inverse-surface flex flex-col p-md h-full space-y-1 shadow-xl z-50">
+<div class="px-4 py-8 mb-4">
+<h1 class="text-headline-sm font-headline-sm font-bold text-white">Admin Panel</h1>
+<p class="text-body-sm font-body-sm text-surface-variant">System Administrator</p>
+</div>
+<div class="flex flex-col space-y-1">
+<a class="flex items-center gap-4 px-4 py-3 text-surface-variant hover:text-white hover:bg-surface-variant/10 transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="text-label-md font-label-md">Overview</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg shadow-sm font-bold scale-98 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="text-label-md font-label-md">Reservations</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-surface-variant hover:text-white hover:bg-surface-variant/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-label-md font-label-md">Tables</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-surface-variant hover:text-white hover:bg-surface-variant/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-surface-variant hover:text-white hover:bg-surface-variant/10 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</div>
+<div class="mt-auto border-t border-surface-variant/10 pt-4">
+<div class="flex items-center gap-3 px-4 py-3 mb-4">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a senior system administrator in a high-tech office environment. The person is smiling confidently, wearing a dark blazer over a crisp white shirt. The background is softly blurred, showing modern computer monitors and sleek, minimalist office furniture. The lighting is balanced and soft, creating a calm and professional atmosphere consistent with a premium SaaS management platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJI3ySbzVPj1z4f1NK-mKLI9-qeStzvsm44GjJO7lFfSPQFlN9KIpoJ-xcbKjoq5EvKL3vL_jsHoaC-n0Ble3MDHEV4mUNv09v6Yq7yF-asRQc-mFbThuMzNivwfezG_yjTxhEat61-_ztoLVvOOAQU3vTGiNI9GXQxex1jlgTyPdx-sMwOcpTZ0WxP7WYLr_3h9MAhTxlqraidtf1Y53UzRf5uvp1H5SQmXtjiGdsmMWxXtdJ9GpBCd-__4bd5M_DY-W2RIud9w"/>
+<div>
+<p class="text-label-md font-label-md text-white">Alex Rivera</p>
+<p class="text-label-sm font-label-sm text-surface-variant">Lead Admin</p>
+</div>
+</div>
+<button class="flex items-center gap-4 px-4 py-3 w-full text-surface-variant hover:text-white hover:bg-surface-variant/10 transition-all rounded-lg">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-72 min-h-screen p-margin-desktop">
+<!-- Header Actions -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-gutter mb-xl">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Reservations</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Manage today's guest list and future bookings.</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex items-center gap-2 bg-surface-container-high text-on-surface px-md py-sm rounded-lg hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+<span class="text-label-md font-label-md">Export PDF</span>
+</button>
+<button class="flex items-center gap-2 bg-primary text-on-primary px-lg py-sm rounded-lg hover:shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span class="text-label-md font-label-md">New Booking</span>
+</button>
+</div>
+</header>
+<!-- Search and Filter Bar -->
+<section class="bg-surface border border-outline-variant rounded-xl shadow-sm mb-lg">
+<div class="flex flex-col lg:flex-row items-center p-md gap-md">
+<!-- Search -->
+<div class="relative flex-1 w-full group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-body-md outline-none" placeholder="Search by customer name, phone, or table..." type="text"/>
+</div>
+<!-- Filters -->
+<div class="flex items-center gap-sm w-full lg:w-auto">
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded-lg pl-4 pr-10 py-3 text-label-md font-label-md text-on-surface focus:ring-2 focus:ring-primary outline-none">
+<option>Filter by Date</option>
+<option>Today</option>
+<option>Tomorrow</option>
+<option>Next 7 Days</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded-lg pl-4 pr-10 py-3 text-label-md font-label-md text-on-surface focus:ring-2 focus:ring-primary outline-none">
+<option>All Statuses</option>
+<option>Confirmed</option>
+<option>Pending</option>
+<option>Arrived</option>
+<option>Cancelled</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="filter_list">filter_list</span>
+</div>
+<button class="p-3 bg-surface-container-high rounded-lg text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+<!-- Bulk Actions (Conditional visibility in real app) -->
+<div class="hidden flex items-center justify-between px-md py-2 bg-primary-container/10 border-t border-outline-variant" id="bulk-actions">
+<div class="flex items-center gap-md">
+<span class="text-label-md font-label-md text-primary"><span id="selected-count">0</span> items selected</span>
+<div class="h-4 w-px bg-outline-variant"></div>
+<button class="text-label-md font-label-md text-secondary hover:underline">Mark as Confirmed</button>
+<button class="text-label-md font-label-md text-error hover:underline">Cancel Selected</button>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="toggleBulkActions(false)">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+</section>
+<!-- Data Table Container -->
+<section class="bg-surface border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-md">
+<input class="rounded border-outline text-primary focus:ring-primary cursor-pointer" id="select-all" type="checkbox"/>
+</th>
+<th class="p-md text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant cursor-pointer group">
+<div class="flex items-center gap-1">
+                                    Customer Name
+                                    <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity" data-icon="arrow_upward">arrow_upward</span>
+</div>
+</th>
+<th class="p-md text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Date</th>
+<th class="p-md text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Time Slot</th>
+<th class="p-md text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Guests</th>
+<th class="p-md text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Table #</th>
+<th class="p-md text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Status</th>
+<th class="p-md text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant text-right">Actions</th>
+</tr>
+</thead>
+<tbody id="reservation-table-body">
+<!-- Data Rows (Simulated Load) -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-md border-b border-outline-variant"><input class="row-checkbox rounded border-outline text-primary focus:ring-primary cursor-pointer" type="checkbox"/></td>
+<td class="p-md border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-label-sm">JS</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Julianne Smith</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">VIP Guest</p>
+</div>
+</div>
+</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface">Oct 24, 2023</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface">19:30</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface">4 Persons</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface font-mono">T-12</td>
+<td class="p-md border-b border-outline-variant">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                    Confirmed
+                                </span>
+</td>
+<td class="p-md border-b border-outline-variant text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" title="View"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" title="Edit"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="p-2 hover:bg-error-container text-error rounded-full transition-colors" title="Cancel"><span class="material-symbols-outlined" data-icon="cancel">cancel</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md border-b border-outline-variant"><input class="row-checkbox rounded border-outline text-primary focus:ring-primary cursor-pointer" type="checkbox"/></td>
+<td class="p-md border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold text-label-sm">MB</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Marcus Bennett</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">+1-555-0123</p>
+</div>
+</div>
+</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface">Oct 24, 2023</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface">20:00</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface">2 Persons</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface font-mono">B-04</td>
+<td class="p-md border-b border-outline-variant">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm font-label-sm inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                                    Pending
+                                </span>
+</td>
+<td class="p-md border-b border-outline-variant text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="p-2 hover:bg-error-container text-error rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="cancel">cancel</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 (Arrived State) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md border-b border-outline-variant"><input class="row-checkbox rounded border-outline text-primary focus:ring-primary cursor-pointer" type="checkbox"/></td>
+<td class="p-md border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-label-sm">LH</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Linda Harrison</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Regular</p>
+</div>
+</div>
+</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface">Oct 24, 2023</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface">18:15</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface">6 Persons</td>
+<td class="p-md border-b border-outline-variant text-body-sm text-on-surface font-mono">T-01</td>
+<td class="p-md border-b border-outline-variant">
+<span class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-label-sm font-label-sm inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                                    Seated
+                                </span>
+</td>
+<td class="p-md border-b border-outline-variant text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant"><span class="material-symbols-outlined" data-icon="edit">edit</span></button>
+<button class="p-2 hover:bg-error-container text-error rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="cancel">cancel</span></button>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row -->
+<tr class="skeleton-row hidden">
+<td class="p-md border-b border-outline-variant"><div class="w-4 h-4 rounded skeleton"></div></td>
+<td class="p-md border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full skeleton"></div>
+<div class="space-y-1">
+<div class="w-24 h-3 skeleton rounded"></div>
+<div class="w-16 h-2 skeleton rounded"></div>
+</div>
+</div>
+</td>
+<td class="p-md border-b border-outline-variant"><div class="w-20 h-3 skeleton rounded"></div></td>
+<td class="p-md border-b border-outline-variant"><div class="w-12 h-3 skeleton rounded"></div></td>
+<td class="p-md border-b border-outline-variant"><div class="w-16 h-3 skeleton rounded"></div></td>
+<td class="p-md border-b border-outline-variant"><div class="w-10 h-3 skeleton rounded"></div></td>
+<td class="p-md border-b border-outline-variant"><div class="w-20 h-6 skeleton rounded-full"></div></td>
+<td class="p-md border-b border-outline-variant text-right"><div class="w-24 h-8 skeleton rounded ml-auto"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="flex flex-col md:flex-row items-center justify-between p-md border-t border-outline-variant bg-surface-container-lowest gap-md">
+<p class="text-body-sm text-on-surface-variant">Showing 1 to 10 of 48 entries</p>
+<div class="flex items-center gap-1">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-on-primary font-bold text-label-md">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant text-label-md">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant text-label-md">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant text-label-md">5</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Stats Grid for Admin Overview Context -->
+<section class="mt-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-surface border border-outline-variant p-md rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Today's Covers</span>
+<span class="material-symbols-outlined text-primary" data-icon="groups">groups</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-md font-headline-md text-on-surface">142</span>
+<span class="text-label-sm font-label-sm text-secondary">+12%</span>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-md rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Active Tables</span>
+<span class="material-symbols-outlined text-secondary" data-icon="restaurant">restaurant</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-md font-headline-md text-on-surface">18/24</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">75% cap.</span>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-md rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Avg. Stay</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="schedule">schedule</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-md font-headline-md text-on-surface">74 min</span>
+<span class="text-label-sm font-label-sm text-error">-4m</span>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-md rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant">Revenue Target</span>
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="payments">payments</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-md font-headline-md text-on-surface">$8.4k</span>
+<span class="text-label-sm font-label-sm text-secondary">On Track</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual Toast Notification -->
+<div class="fixed bottom-margin-desktop right-margin-desktop transform translate-y-20 opacity-0 bg-inverse-surface text-inverse-on-surface px-lg py-md rounded-lg shadow-xl transition-all duration-300 flex items-center gap-3 z-50" id="toast">
+<span class="material-symbols-outlined text-secondary-container" data-icon="check_circle">check_circle</span>
+<span class="text-label-md font-label-md">Status updated successfully</span>
+<button class="ml-4 hover:opacity-70" onclick="hideToast()"><span class="material-symbols-outlined text-sm" data-icon="close">close</span></button>
+</div>
+<script>
+        // Checkbox Logic
+        const selectAll = document.getElementById('select-all');
+        const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+        const bulkActions = document.getElementById('bulk-actions');
+        const selectedCountLabel = document.getElementById('selected-count');
+
+        selectAll.addEventListener('change', (e) => {
+            rowCheckboxes.forEach(cb => cb.checked = e.target.checked);
+            updateBulkVisibility();
+        });
+
+        rowCheckboxes.forEach(cb => {
+            cb.addEventListener('change', updateBulkVisibility);
+        });
+
+        function updateBulkVisibility() {
+            const checkedCount = Array.from(rowCheckboxes).filter(cb => cb.checked).length;
+            if (checkedCount > 0) {
+                bulkActions.classList.remove('hidden');
+                selectedCountLabel.textContent = checkedCount;
+            } else {
+                bulkActions.classList.add('hidden');
+            }
+        }
+
+        function toggleBulkActions(show) {
+            if (!show) {
+                selectAll.checked = false;
+                rowCheckboxes.forEach(cb => cb.checked = false);
+                bulkActions.classList.add('hidden');
+            }
+        }
+
+        // Mock Loading State
+        function simulateLoading() {
+            const tbody = document.getElementById('reservation-table-body');
+            const rows = tbody.querySelectorAll('tr:not(.skeleton-row)');
+            const skeletons = [];
+            
+            // Show skeletons
+            rows.forEach(r => r.style.display = 'none');
+            for(let i=0; i<5; i++) {
+                const clone = tbody.querySelector('.skeleton-row').cloneNode(true);
+                clone.classList.remove('hidden');
+                tbody.appendChild(clone);
+                skeletons.push(clone);
+            }
+
+            setTimeout(() => {
+                skeletons.forEach(s => s.remove());
+                rows.forEach(r => r.style.display = 'table-row');
+                showToast("Data refreshed from cloud");
+            }, 1200);
+        }
+
+        // Toast Logic
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            if(message) toast.querySelector('span:nth-child(2)').textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(hideToast, 4000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('translate-y-20', 'opacity-0');
+        }
+
+        // Search highlight interaction
+        document.querySelector('input[type="text"]').addEventListener('focus', () => {
+             // Visual emphasis on entry
+        });
+
+        // Trigger loading on refresh click
+        document.querySelector('[data-icon="refresh"]').parentElement.addEventListener('click', simulateLoading);
+    </script>
+</body></html>
